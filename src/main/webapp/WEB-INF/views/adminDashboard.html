@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:fragment="head">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/assets/css/productCss.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+          crossorigin="anonymous">
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="/Doc/syntax-highlighter/styles/shCore.css" media="all">
+    <link rel="stylesheet" type="text/css" href="/Doc/syntax-highlighter/styles/shThemeDefault.css" media="all">
+    <link rel="stylesheet" href="/Doc/css/normalize.min.css">
+    <link rel="stylesheet" href="/Doc/css/main.css">
+    <title>Product List</title>
+</head>
+
+<body >
+<aside class="left-sidebar">
+    <div class="logo">
+        <a href="/admin">
+            <h1>Fashion</h1>
+            <h3 style="color: cornsilk">Admin DashBoard</h3>
+        </a>
+    </div>
+
+    <div class="btn-group-vertical" style="margin-left:11%" >
+        <button type="button" class="btn btn-outline-light">
+            <a href="/products" style="color: #96dd3b">Product Governance</a></button>
+        </br>
+        <button type="button" class="btn btn-outline-light">
+            <a href="/admin/user" style="color: #96dd3b">Customer Governance</a></button>
+        </br>
+        <button type="button" class="btn btn-outline-light">
+            <a href="/categories" style="color: #96dd3b">Category Governance</a></button>
+        </br>
+        <button type="button" class="btn btn-outline-light">
+            <a href="/producers" style="color: #96dd3b">Producer Governance</a></button>
+        </br>
+        <button type="button" class="btn btn-outline-light">
+            <a href="/products" style="color: #96dd3b">Oder Manage</a></button>
+        </br>
+
+    </div>
+</aside>
+<!-- Main Wrapper -->
+<div id="main-wrapper">
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;text-align: center">
+        <a class="navbar-brand" >WELCOME ADMIN DASHBOARD</a>
+        <div>
+            <h1> Dear:  <span th:text="${user}"></span></h1>
+            <div sec:authorize="isAuthenticated()">
+                <a th:href="@{#}">Profile</a> | <a th:href="@{/logout}">Logout</a>
+            </div>
+        </div>
+    </nav>
+    <div class="main-content">
+        <section id="welcome">
+            <div class="content-header">
+                <h1>Fashion</h1>
+            </div>
+            <div class="welcome">
+                <h2 class="twenty">Welcome To Fashion</h2>
+                <p>Firstly, a huge thanks for purchasing this theme, your support is truly appreciated!</p>
+                <p>This document covers the installation and use of this theme and often reveals answers to common problems and issues - read this document thoroughly if you are experiencing any difficulties. If you have any questions that are beyond the scope of this document. Thank you so much!</p>
+            </div>
+            <div class="features">
+                <h2 class="twenty">Template Features</h2>
+                <ul>
+                    <li>Clean &amp; Simple Design</li>
+                    <li>HTML5 &amp; CSS3</li>
+                    <li>Fully Responsive Design</li>
+                    <li>PHP/Ajax Powered Working Contact Form</li>
+                    <li>All files are well commented</li>
+                    <li>Cross Browser Compatible with IE11+, Firefox, Safari, Opera, Chrome</li>
+                    <li>Extensive Documentation</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+</div>
+<script type="text/javascript" src="/Doc/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="/Doc/js/jquery.nav.js"></script>
+<script type="text/javascript" src="/Doc/syntax-highlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="/Doc/syntax-highlighter/scripts/shBrushXml.js"></script>
+<script type="text/javascript" src="/Doc/syntax-highlighter/scripts/shBrushCss.js"></script>
+<script type="text/javascript" src="/Doc/syntax-highlighter/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="/Doc/syntax-highlighter/scripts/shBrushPhp.js"></script>
+<script type="text/javascript">SyntaxHighlighter.all()</script>
+<script type="text/javascript" src="/Doc/js/custom.js"></script>
+
+</body>
+</html>

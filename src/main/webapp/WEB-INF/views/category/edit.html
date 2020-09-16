@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/assets/css/productCss.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+          crossorigin="anonymous">
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="/Doc/syntax-highlighter/styles/shCore.css" media="all">
+    <link rel="stylesheet" type="text/css" href="/Doc/syntax-highlighter/styles/shThemeDefault.css" media="all">
+    <link rel="stylesheet" href="/Doc/css/normalize.min.css">
+    <link rel="stylesheet" href="/Doc/css/main.css">
+    <title>Category Edit</title>
+
+</head>
+<body id="welcome">
+<aside class="left-sidebar">
+    <div class="logo">
+        <a href="/admin">
+            <h1>Fashion</h1>
+            <h3 style="color: cornsilk">Admin DashBoard</h3>
+        </a>
+    </div>
+
+    <div class="btn-group-vertical" style="margin-left:11%">
+        <button type="button" class="btn btn-outline-light">
+            <a href="/admin/products" style="color: #96dd3b">Product Governance</a></button>
+        </br>
+        <button type="button" class="btn btn-outline-light">
+            <a href="/admin/user" style="color: #96dd3b">Customer Governance</a></button>
+        </br>
+        <button type="button" class="btn btn-outline-light">
+            <a href="/admin/categories" style="color: #96dd3b">Category Governance</a></button>
+        </br>
+        <button type="button" class="btn btn-outline-light">
+            <a href="/admin/producers" style="color: #96dd3b">Producer Governance</a></button>
+        </br>
+        <button type="button" class="btn btn-outline-light">
+            <a href="/admin/products" style="color: #96dd3b">Oder Manage</a></button>
+        </br>
+
+    </div>
+</aside>
+
+<div id="main-wrapper">
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+        <a class="navbar-brand">Category Manage - Edit Category</a>
+        <form class="form-inline">
+            <button type="button" class="btn btn-outline-primary">
+                <a href="/admin/categories" style="color: #96dd3b">Go Back Category List</a></button>
+            </br>
+        </form>
+    </nav>
+    <div id="customers">
+        <div id="main-form">
+            <th:block th:if="${message}">
+                <p th:text="${message}"></p>
+            </th:block>
+            <form th:action="@{/edit-category}" th:object="${category}" method="post">
+                <input th:type="hidden" name="id" th:field="*{categoryId}">
+                <div>
+                    <lable>Category Name:</lable>
+                    <input type="text" th:field="*{categoryName}"/>
+                    <p th:if="${#fields.hasErrors('categoryName')}" th:errors="*{categoryName}">Name Error</p>
+                </div>
+                </br>
+                <input type="submit" value="Update Category" class="btn btn-outline-primary">
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

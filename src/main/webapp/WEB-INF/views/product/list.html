@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/assets/css/productCss.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+          crossorigin="anonymous">
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="/Doc/syntax-highlighter/styles/shCore.css" media="all">
+    <link rel="stylesheet" type="text/css" href="/Doc/syntax-highlighter/styles/shThemeDefault.css" media="all">
+    <link rel="stylesheet" href="/Doc/css/normalize.min.css">
+    <link rel="stylesheet" href="/Doc/css/main.css">
+    <title>Product List</title>
+
+</head>
+<body>
+<aside class="left-sidebar">
+    <div class="logo">
+        <a href="/admin">
+            <h1>Fashion</h1>
+            <h3 style="color: cornsilk">Admin DashBoard</h3>
+        </a>
+    </div>
+
+    <div class="btn-group-vertical" style="margin-left:11%">
+        <button type="button" class="btn btn-outline-light">
+            <a href="/admin/products" style="color: #96dd3b">Product Governance</a></button>
+        </br>
+        <button type="button" class="btn btn-outline-light">
+            <a href="/admin/user" style="color: #96dd3b">Customer Governance</a></button>
+        </br>
+        <button type="button" class="btn btn-outline-light">
+            <a href="/admin/categories" style="color: #96dd3b">Category Governance</a></button>
+        </br>
+        <button type="button" class="btn btn-outline-light">
+            <a href="/admin/producers" style="color: #96dd3b">Producer Governance</a></button>
+        </br>
+        <button type="button" class="btn btn-outline-light">
+            <a href="/admin/products" style="color: #96dd3b">Oder Manage</a></button>
+        </br>
+
+    </div>
+</aside>
+
+<div id="main-wrapper">
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+        <a class="navbar-brand">Product Manage - Product List</a>
+        <form class="form-inline" action="/admin/products">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="s">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </nav>
+
+    <table id="customers" style="table-layout: fixed;margin-left: 2%;" >
+        <tr>
+            <th>Product name</th>
+            <th>Product Price</th>
+            <th>Color</th>
+            <th>Size</th>
+            <th>Product Photo</th>
+            <th>Discount </th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Producer</th>
+            <th>Stock</th>
+            <th>Edit</th>
+            <th>Delete</th>
+            <th>View</th>
+        </tr>
+        <th:block th:each="product : ${products}">
+            <tr>
+                <td th:text="${product.productName}"></td>
+                <td th:text="${product.productPrice}"></td>
+                <td th:text="${product.color}"></td>
+                <td th:text="${product.size}"></td>
+                <td th:text="${product.productPhoto}"></td>
+                <td th:text="${product.discount}"></td>
+                <td th:text="${product.description}"></td>
+                <td th:text="${product.category.categoryName}"></td>
+                <td th:text="${product.producer.producerName}"></td>
+                <td th:text="${product.stock}"></td>
+                <td><a th:href="@{/edit-product/__${product.productId}__ }">Edit</a></td>
+                <td><a th:href="@{/delete-product/__${product.productId}__ }">Delete</a></td>
+                <td><a th:href="@{/view-product/__${product.productId}__ }">View</a></td>
+            </tr>
+        </th:block>
+    </table>
+
+    <div style="margin-left: 2.5%">
+        <a th:href="@{'/products'(page=${products.number - 1})}" th:if="${products.hasPrevious()}">Previous</a>
+        <span th:text="${products.number + 1}"></span>/<span th:text="${products.totalPages}"></span>
+        <a th:href="@{'/products'(page=${products.number + 1})}" th:if="${products.hasNext()}">Next</a>
+    </div>
+    </br>
+    <div>
+        <a style="margin-left: 2.5%" href="/create-product">
+            <button type="submit" class="btn btn-outline-primary">Create New Product</button>
+        </a>
+    </div>
+</div>
+
+</body>
+</html>

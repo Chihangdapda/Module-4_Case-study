@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/assets/css/productCss.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+          crossorigin="anonymous">
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="/Doc/syntax-highlighter/styles/shCore.css" media="all">
+    <link rel="stylesheet" type="text/css" href="/Doc/syntax-highlighter/styles/shThemeDefault.css" media="all">
+    <link rel="stylesheet" href="/Doc/css/normalize.min.css">
+    <link rel="stylesheet" href="/Doc/css/main.css">
+    <title>Product List</title>
+</head>
+
+<body>
+<aside class="left-sidebar">
+    <div class="logo">
+        <a href="/admin">
+            <h1>Fashion</h1>
+            <h3 style="color: cornsilk">Admin DashBoard</h3>
+        </a>
+    </div>
+</aside>
+<!-- Main Wrapper -->
+<div id="main-wrapper">
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;text-align: center">
+        <a class="navbar-brand">PLEASE LOGIN </a>
+    </nav>
+    <div class="main-content">
+        <form th:action="@{/login}" th:object="${user}" method="post">
+            <div>
+                <label>User Name</label>
+                <label th:field="*{userName}"></label>
+                <p th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">Name Error</p>
+            </div>
+            <div>
+                <label>User Password</label>
+                <label th:field="*{password}"></label>
+                <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Name Error</p>
+            </div>
+            <input type="submit" value="Login" class="btn btn-outline-primary">
+        </form>
+    </div>
+</div>
+<script type="text/javascript" src="/Doc/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="/Doc/js/jquery.nav.js"></script>
+<script type="text/javascript" src="/Doc/syntax-highlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="/Doc/syntax-highlighter/scripts/shBrushXml.js"></script>
+<script type="text/javascript" src="/Doc/syntax-highlighter/scripts/shBrushCss.js"></script>
+<script type="text/javascript" src="/Doc/syntax-highlighter/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="/Doc/syntax-highlighter/scripts/shBrushPhp.js"></script>
+<script type="text/javascript">SyntaxHighlighter.all()</script>
+<script type="text/javascript" src="/Doc/js/custom.js"></script>
+
+</body>
+</html>
